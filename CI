@@ -1,0 +1,23 @@
+# [legend] P=CI-Passed, F=CI-Failed, .=No-CI-Ran
+
+# Illustration A
+master . F . .
+pull      \ . . P
+# Base commit's CI failed therefore base report is invalid.
+# Resulting in "missing base report"
+
+------------------------------------------------
+
+# Illustration B
+master . . . .
+pull        \ . . P
+# Base commit has no reports uploaded.
+# Resulting in "missing base report"
+
+------------------------------------------------
+
+# Illustration C
+master P
+pull    \ . . P
+# Base and head commits passed CI and uploaded coverage to Codecov.
+# Resulting in a beautiful comment being posted.
